@@ -1,0 +1,13 @@
+{
+  "name": "cabinxTFS",
+  "version": "1.0.0",
+  "bin": {
+    "tfs": "./bin/index.js"
+  },
+  "author": "guifu.wu <guifu.wu@dmall.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "ejs": "^3.1.6"
+  }
+}

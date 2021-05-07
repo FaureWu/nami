@@ -1,0 +1,16 @@
+{
+  "name": "@opcjs/cli",
+  "version": "1.0.0",
+  "bin": {
+    "cabinxlint": "./bin/index.js"
+  },
+  "author": "guifu.wu <guifu.wu@dmall.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "ejs": "^3.1.6",
+    "ora": "^5.4.0",
+    "prettier": "^2.2.1",
+    "shelljs": "^0.8.4"
+  }
+}
