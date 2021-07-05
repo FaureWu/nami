@@ -1,6 +1,6 @@
 {
   "name": "@opcjs/nami",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "bin": {
     "nami": "./bin/index.js"
   },

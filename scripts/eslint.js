@@ -45,12 +45,12 @@ function writeEslintIgnoreFile() {
   const files = file.readFilesDeep(process.cwd())
   const ignoreFileTemplate = file.readFileContent(path.resolve(__dirname, '../template/eslintignore.ejs'))
   const content = ejs.render(ignoreFileTemplate, { paths: files.map(f => {
-    return f.replace(process.cwd(), '').replace(new RegExp(path.sep, 'g'), '/').replace('/', '')
+    return f.replace(process.cwd(), '').replace(new RegExp('\\' + path.sep, 'g'), '/').replace('/', '')
   })})
   file.writeFileContent(path.resolve(process.cwd(), '.eslintignore'), content)
 }
 
-function writeEditorConfig() {
+function writeEslintrc() {
   const eslintrcTemplate = file.readFileContent(path.resolve(__dirname, '../template/eslintrc.ejs'))
   const content = ejs.render(eslintrcTemplate)
   file.writeFileContent(path.resolve(process.cwd(), '.eslintrc'), content)
@@ -69,18 +69,16 @@ function writePackage() {
 }
 
 function run() {
-  const spin = ora('[Cabinx ESlint] 配置中同步中，请等待...').start()
+  const spin = ora('[Cabinx ESlint] 配置同步中，请等待...').start()
 
   writeEslintIgnoreFile()
-  writeEditorConfig()
+  writeEslintrc()
   writePrettierrc()
   writePackage()
 
   console.log(`- [Cabinx ESlint] ${chalk.green('配置同步成功!')}`)
-  shell.exec('git config core.hooksPath ".git/hooks"')
   spin.stop()
   shell.exec('yarn install')
-
   shell.exec('git config core.hooksPath ".git/hooks"')
 }
 

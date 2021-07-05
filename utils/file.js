@@ -57,6 +57,18 @@ const readFilesDeep = createReadFiles(filePath => {
   return filePath
 })
 
+const readCabinXMobileDeep = createReadFiles(filePath => {
+  if (isDirectory(filePath)) {
+    const ignorePaths = ['node_modules', '.history'].map(item => path.resolve(process.cwd(), item))
+
+    if (ignorePaths.every(item => filePath.indexOf(item) === -1)) return readFilesDeep(filePath)
+
+    return filePath
+  }
+
+  return filePath
+})
+
 function readFileContent(filePath) {
   return fs
     .readFileSync(filePath)

@@ -5,7 +5,7 @@ const path = require('path')
 
 const args = process.argv.slice(2)
 
-const scripts = ['eslint']
+const scripts = ['eslint', 'ignore']
 
 const scriptIndex = args.findIndex(
   (x) => scripts.some(s => x),
